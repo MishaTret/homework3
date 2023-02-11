@@ -89,9 +89,10 @@ class Human:
         print(f"{home_indexess:^50}", '\n')
         print(f'Food - {self.home.food}')
         print(f'Mess - {self.home.mess}')
-        print(f'Car - {self.car.brand}' + {self.car.fuel} + {self.car.consumption} + {self.car.strength})
-        print(f'Job -' + {self.job} + {self.salery})
-
+        car_indexess = f'{self.car.brand} car indexess'
+        print(f"{car_indexess:^50}", '\n')
+        print(f"Fuel - {self.car.fuel}")
+        print(f"Strength - {self.car.strength}", "\n")
 
     def is_alive(self):
         pass
@@ -103,13 +104,11 @@ class Human:
             self.get_home()
         if self.car is None:
             self.get_car()
-            print(self.car.brand)
-
-
-
-
-
-
+            print(f'I have bought a car {self.car.brand}')
+        if self.job is None:
+            self.get_job()
+            print(f'My job is {self.job.job}, with salary {self.job.salary}')
+        self.days_indexes(day)
 
         # Самое интересное - устроить веселую жизнь герою (по аналогии со студентом)
         dice = random.randint(1, 4)
@@ -123,10 +122,25 @@ class Human:
             else:
                 print("Let's chill")
                 self.chill()
+        elif self.money < 0:
+            print("Time to work")
+            self.work()
+        elif self.car.strength < 10:
+            print("I need to repair my car")
+            self.to_repair()
+        elif dice == 1:
+            print("Let's chill!")
+            self.chill()
+        elif dice == 2:
+            print("Time to work")
+            self.work()
+        elif dice == 3:
+            print("Cleaning time!..")
+            self.clean_home()
+        elif dice == 4:
+            print("Time for shopping")
+            self.shopping(manage="delicacies")
 
-
-        # Проверить количество денег
-        # Проверить тех состояние авто
 
 
 class Auto:
